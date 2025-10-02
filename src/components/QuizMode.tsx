@@ -20,10 +20,16 @@ export const QuizMode = ({ onBack }: QuizModeProps) => {
   const [score, setScore] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [quizComplete, setQuizComplete] = useState(false);
+  const [answered, setAnswered] = useState(false);
 
   const currentPart = bodyParts[currentQuestion];
 
   const handleAnswer = (selectedX: number, selectedY: number) => {
+    // Prevent multiple clicks on the same question
+    if (answered) return;
+    
+    setAnswered(true);
+    
     const distance = Math.sqrt(
       Math.pow(selectedX - currentPart.x, 2) + Math.pow(selectedY - currentPart.y, 2)
     );
@@ -40,7 +46,10 @@ export const QuizMode = ({ onBack }: QuizModeProps) => {
     }
 
     if (currentQuestion + 1 < bodyParts.length) {
-      setTimeout(() => setCurrentQuestion(currentQuestion + 1), 1000);
+      setTimeout(() => {
+        setCurrentQuestion(currentQuestion + 1);
+        setAnswered(false); // Reset for next question
+      }, 1000);
     } else {
       setQuizComplete(true);
       setShowConfetti(true);
@@ -52,6 +61,7 @@ export const QuizMode = ({ onBack }: QuizModeProps) => {
     setCurrentQuestion(0);
     setScore(0);
     setQuizComplete(false);
+    setAnswered(false);
   };
 
   return (
@@ -86,12 +96,13 @@ export const QuizMode = ({ onBack }: QuizModeProps) => {
               </p>
             </div>
 
-            <div className="relative mx-auto max-w-md cursor-pointer">
+            <div className={`relative mx-auto max-w-md ${answered ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}>
               <img
                 src={bodyImage}
                 alt="Body illustration"
                 className="w-full h-auto"
                 onClick={(e) => {
+                  if (answered) return; // Prevent clicks after answering
                   const rect = e.currentTarget.getBoundingClientRect();
                   const x = ((e.clientX - rect.left) / rect.width) * 100;
                   const y = ((e.clientY - rect.top) / rect.height) * 100;

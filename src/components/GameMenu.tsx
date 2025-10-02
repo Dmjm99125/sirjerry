@@ -1,6 +1,33 @@
+/**
+ * Game Menu Component - Main Navigation Hub
+ * 
+ * This component serves as the central hub for selecting different game modes
+ * in the Body Parts Fun educational application. It presents all available
+ * learning activities in an engaging, kid-friendly interface.
+ * 
+ * DESIGN PRINCIPLES:
+ * - Large, colorful buttons easy for young children to click
+ * - Clear icons that represent each game type
+ * - Hover effects that provide visual feedback
+ * - Descriptive text to help children understand each mode
+ * 
+ * EDUCATIONAL STRUCTURE:
+ * - Progressive difficulty from exploration to testing
+ * - Multiple learning modalities (visual, audio, kinesthetic)
+ * - Various game types to maintain engagement
+ * - Self-directed learning through free choice
+ * 
+ * ACCESSIBILITY FEATURES:
+ * - High contrast colors and clear typography
+ * - Large touch targets for tablets and interactive whiteboards
+ * - Consistent visual language across all buttons
+ * - Descriptive text for emerging readers
+ */
+
 import { Book, Puzzle, Brain, Headphones, Grid3x3, Palette } from "lucide-react";
 
 interface GameMenuProps {
+  /** Callback function to handle game mode selection */
   onSelectMode: (mode: "learn" | "drag" | "quiz" | "memory" | "sound" | "color") => void;
 }
 

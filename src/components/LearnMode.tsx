@@ -1,3 +1,29 @@
+/**
+ * Learn Mode Component - Interactive Body Parts Discovery
+ * 
+ * This component provides a free-exploration learning environment where
+ * children can click on any body part to learn about it. It combines
+ * visual, auditory, and textual learning for multi-sensory education.
+ * 
+ * EDUCATIONAL APPROACH:
+ * - Self-paced learning (no time pressure)
+ * - Immediate feedback through audio and visual responses
+ * - Detailed information cards with fun facts
+ * - Encourages curiosity and exploration
+ * 
+ * ACCESSIBILITY FEATURES:
+ * - Text-to-speech for pronunciation help
+ * - Large clickable areas for young children
+ * - High contrast visual feedback
+ * - Clear, simple language in descriptions
+ * 
+ * LEARNING REINFORCEMENT:
+ * - Visual highlighting of selected body parts
+ * - Audio pronunciation of body part names
+ * - Educational descriptions and fun facts
+ * - Animated feedback to maintain engagement
+ */
+
 import { useState } from "react";
 import { ArrowLeft, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,12 +36,31 @@ interface LearnModeProps {
 }
 
 export const LearnMode = ({ onBack }: LearnModeProps) => {
+  // Track which body part is currently selected for display
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
 
+  /**
+   * Handle clicking on a body part
+   * 
+   * @param part - The body part object that was clicked
+   * 
+   * FUNCTIONALITY:
+   * 1. Update visual state to show information card
+   * 2. Speak the body part name for pronunciation help
+   * 3. Display educational content below the character
+   * 
+   * AUDIO SETTINGS:
+   * - Rate: 0.8 (slightly slower for clear pronunciation)
+   * - Uses browser's built-in speech synthesis
+   * - Automatically adapts to user's system language
+   */
   const handlePartClick = (part: typeof bodyParts[0]) => {
     setSelectedPart(part.id);
+    
+    // Create speech synthesis for pronunciation help
+    // This helps children learn correct pronunciation
     const utterance = new SpeechSynthesisUtterance(part.name);
-    utterance.rate = 0.8;
+    utterance.rate = 0.8; // Slightly slower for clarity
     window.speechSynthesis.speak(utterance);
   };
 

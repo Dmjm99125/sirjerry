@@ -1,13 +1,58 @@
+/**
+ * Body Parts Data - Educational Content for Kids
+ * 
+ * This file contains all the body parts data used throughout the educational games.
+ * Each body part includes position coordinates, descriptions, and fun facts designed
+ * for kindergarten-age children (4-7 years old).
+ * 
+ * COORDINATE SYSTEM:
+ * - x: Horizontal position (0 = far left, 100 = far right)
+ * - y: Vertical position (0 = top, 100 = bottom)
+ * - Coordinates are percentages relative to the character image
+ * 
+ * DESIGN PRINCIPLES:
+ * - Left/right body parts are separated for bilateral awareness
+ * - Descriptions use simple, kid-friendly language
+ * - Fun facts encourage curiosity and learning
+ * - Emojis make the interface visually appealing
+ */
+
+/**
+ * Interface defining the structure of each body part
+ * Used throughout the application for type safety
+ */
 export interface BodyPart {
+  /** Unique identifier for the body part (used in game logic) */
   id: string;
+  /** Display name shown to children */
   name: string;
+  /** Horizontal position on character image (0-100%) */
   x: number;
+  /** Vertical position on character image (0-100%) */
   y: number;
+  /** Emoji representation for visual appeal */
   emoji: string;
+  /** Kid-friendly description of the body part */
   description: string;
+  /** Interesting fact to encourage learning */
   funFact: string;
 }
 
+/**
+ * Complete collection of body parts for the educational games
+ * 
+ * ORGANIZATION:
+ * - Head & facial features (top section)
+ * - Upper body & arms (middle-upper section)  
+ * - Lower body & legs (bottom section)
+ * - Special parts (back, positioned separately)
+ * 
+ * POSITIONING STRATEGY:
+ * - Center parts (head, nose, mouth, etc.): x = 50%
+ * - Left parts: x = 15-45%
+ * - Right parts: x = 55-85%
+ * - Y coordinates follow anatomical top-to-bottom order
+ */
 export const bodyParts: BodyPart[] = [
   {
     id: "head",

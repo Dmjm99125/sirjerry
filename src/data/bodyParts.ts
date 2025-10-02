@@ -120,8 +120,8 @@ export const bodyParts: BodyPart[] = [
   {
     id: "arms",
     name: "Left Arm",
-    x: 36,
-    y: 55,
+    x: 38,
+    y: 53,
     emoji: "🦾",
     description: "Your left arm helps you reach, hug, and carry things!",
     funFact: "Your arms have strong muscles and bones!"
@@ -129,8 +129,8 @@ export const bodyParts: BodyPart[] = [
   {
     id: "right-arm",
     name: "Right Arm",
-    x: 65,
-    y: 55,
+    x: 62,
+    y: 53,
     emoji: "🦾",
     description: "Your right arm helps you reach, hug, and carry things!",
     funFact: "Both arms work together to help you do amazing things!"
@@ -138,8 +138,8 @@ export const bodyParts: BodyPart[] = [
   {
     id: "elbows",
     name: "Left Elbow",
-    x: 33,
-    y: 62,
+    x: 34,
+    y: 60,
     emoji: "🤸",
     description: "Your left elbow is in the middle of your left arm and helps it bend!",
     funFact: "Try touching your elbow with your tongue - you can't!"
@@ -147,20 +147,29 @@ export const bodyParts: BodyPart[] = [
   {
     id: "right-elbow",
     name: "Right Elbow",
-    x: 68,
-    y: 62,
+    x: 65,
+    y: 60,
     emoji: "🤸",
     description: "Your right elbow is in the middle of your right arm and helps it bend!",
     funFact: "Your elbows are like hinges that let your arms fold!"
   },
   {
     id: "hands",
-    name: "Hands",
-    x: 18,
-    y: 72,
+    name: "Left Hand",
+    x: 35,
+    y: 68,
     emoji: "✋",
-    description: "Your hands help you hold things, write, and wave hello! Each hand has 5 fingers.",
+    description: "Your left hand helps you hold things, write, and wave hello! It has 5 fingers.",
     funFact: "Your fingerprints are unique - no one else has the same!"
+  },
+  {
+    id: "right-hand",
+    name: "Right Hand",
+    x: 65,
+    y: 68,
+    emoji: "🤚",
+    description: "Your right hand helps you hold things, write, and wave hello! It has 5 fingers.",
+    funFact: "Most people are right-handed, but some are left-handed!"
   },
   {
     id: "belly",

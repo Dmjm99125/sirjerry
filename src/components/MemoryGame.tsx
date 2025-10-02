@@ -11,7 +11,7 @@ interface MemoryGameProps {
 
 // Select 6 body parts for memory game (12 cards total)
 const selectedParts = allBodyParts
-  .filter(part => ["head", "eyes", "right-eye", "ears", "right-ear", "nose", "mouth", "hands", "knees", "right-knee", "feet", "right-foot"].includes(part.id));
+  .filter(part => ["head", "eyes", "right-eye", "ears", "right-ear", "nose", "mouth", "hands", "right-hand", "knees", "right-knee", "feet", "right-foot"].includes(part.id));
 
 interface Card {
   id: string;

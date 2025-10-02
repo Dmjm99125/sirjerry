@@ -12,7 +12,7 @@ interface QuizModeProps {
 
 // Select a subset for the quiz
 const bodyParts = allBodyParts.filter(part => 
-  ["head", "eyes", "right-eye", "nose", "mouth", "ears", "right-ear", "shoulders", "right-shoulder", "arms", "right-arm", "hands", "belly", "legs", "right-leg", "feet", "right-foot"].includes(part.id)
+  ["head", "eyes", "right-eye", "nose", "mouth", "ears", "right-ear", "shoulders", "right-shoulder", "arms", "right-arm", "hands", "belly", "legs", "right-leg", "thighs", "right-thigh", "knees", "right-knee", "feet", "right-foot"].includes(part.id)
 );
 
 export const QuizMode = ({ onBack }: QuizModeProps) => {

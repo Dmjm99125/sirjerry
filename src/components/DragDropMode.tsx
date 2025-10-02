@@ -12,7 +12,7 @@ interface DragDropModeProps {
 
 // Select a subset for the drag-drop game
 const bodyParts = allBodyParts.filter(part => 
-  ["head", "eyes", "right-eye", "ears", "right-ear", "nose", "mouth", "arms", "right-arm", "hands", "belly", "legs", "right-leg", "feet", "right-foot"].includes(part.id)
+  ["head", "eyes", "right-eye", "ears", "right-ear", "nose", "mouth", "arms", "right-arm", "hands", "belly", "legs", "right-leg", "thighs", "right-thigh", "knees", "right-knee", "feet", "right-foot"].includes(part.id)
 );
 
 export const DragDropMode = ({ onBack }: DragDropModeProps) => {

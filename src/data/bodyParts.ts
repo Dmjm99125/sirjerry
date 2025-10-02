@@ -93,7 +93,7 @@ export const bodyParts: BodyPart[] = [
   {
     id: "shoulders",
     name: "Left Shoulder",
-    x: 35,
+    x: 40,
     y: 45,
     emoji: "💪",
     description: "Your left shoulder helps your left arm move in all directions!",
@@ -102,7 +102,7 @@ export const bodyParts: BodyPart[] = [
   {
     id: "right-shoulder",
     name: "Right Shoulder",
-    x: 65,
+    x: 60,
     y: 45,
     emoji: "💪",
     description: "Your right shoulder helps your right arm move in all directions!",
@@ -120,8 +120,8 @@ export const bodyParts: BodyPart[] = [
   {
     id: "arms",
     name: "Left Arm",
-    x: 25,
-    y: 58,
+    x: 36,
+    y: 55,
     emoji: "🦾",
     description: "Your left arm helps you reach, hug, and carry things!",
     funFact: "Your arms have strong muscles and bones!"
@@ -129,8 +129,8 @@ export const bodyParts: BodyPart[] = [
   {
     id: "right-arm",
     name: "Right Arm",
-    x: 75,
-    y: 58,
+    x: 65,
+    y: 55,
     emoji: "🦾",
     description: "Your right arm helps you reach, hug, and carry things!",
     funFact: "Both arms work together to help you do amazing things!"
@@ -138,7 +138,7 @@ export const bodyParts: BodyPart[] = [
   {
     id: "elbows",
     name: "Left Elbow",
-    x: 20,
+    x: 33,
     y: 62,
     emoji: "🤸",
     description: "Your left elbow is in the middle of your left arm and helps it bend!",
@@ -147,7 +147,7 @@ export const bodyParts: BodyPart[] = [
   {
     id: "right-elbow",
     name: "Right Elbow",
-    x: 80,
+    x: 68,
     y: 62,
     emoji: "🤸",
     description: "Your right elbow is in the middle of your right arm and helps it bend!",
@@ -174,9 +174,9 @@ export const bodyParts: BodyPart[] = [
   {
     id: "back",
     name: "Back",
-    x: 50,
+    x: 85,
     y: 55,
-    emoji: "🏃",
+    emoji: "↩️",
     description: "Your back is behind you. It has your spine that keeps you standing tall!",
     funFact: "Your spine is made of 33 small bones!"
   },
@@ -184,7 +184,7 @@ export const bodyParts: BodyPart[] = [
     id: "legs",
     name: "Left Leg",
     x: 42,
-    y: 82,
+    y: 84,
     emoji: "🦵",
     description: "Your left leg helps you walk, run, jump, and dance!",
     funFact: "Your leg bones are the strongest bones in your body!"
@@ -193,25 +193,52 @@ export const bodyParts: BodyPart[] = [
     id: "right-leg",
     name: "Right Leg",
     x: 58,
-    y: 82,
+    y: 84,
     emoji: "🦵",
     description: "Your right leg helps you walk, run, jump, and dance!",
     funFact: "Both legs work together to keep you balanced and moving!"
   },
   {
+    id: "thighs",
+    name: "Left Thigh",
+    x: 42,
+    y: 70,
+    emoji: "🍗",
+    description: "Your left thigh is the upper part of your left leg with strong muscles!",
+    funFact: "Your thigh has the longest bone in your body called the femur!"
+  },
+  {
+    id: "right-thigh",
+    name: "Right Thigh",
+    x: 58,
+    y: 70,
+    emoji: "🍗",
+    description: "Your right thigh is the upper part of your right leg with strong muscles!",
+    funFact: "Both thighs work together to help you run, jump, and climb!"
+  },
+  {
     id: "knees",
-    name: "Knees",
-    x: 50,
-    y: 75,
+    name: "Left Knee",
+    x: 42,
+    y: 77,
     emoji: "🦿",
-    description: "Your knees are in the middle of your legs. They help your legs bend!",
+    description: "Your left knee is in the middle of your left leg and helps it bend!",
     funFact: "Your knees are protected by a special bone called a kneecap!"
+  },
+  {
+    id: "right-knee",
+    name: "Right Knee",
+    x: 58,
+    y: 77,
+    emoji: "🦿",
+    description: "Your right knee is in the middle of your right leg and helps it bend!",
+    funFact: "Both knees work like hinges to help you walk and run!"
   },
   {
     id: "feet",
     name: "Left Foot",
     x: 42,
-    y: 92,
+    y: 90,
     emoji: "🦶",
     description: "Your left foot helps you stand and walk. It has 5 toes!",
     funFact: "You have 26 bones in each foot!"
@@ -220,7 +247,7 @@ export const bodyParts: BodyPart[] = [
     id: "right-foot",
     name: "Right Foot",
     x: 58,
-    y: 92,
+    y: 90,
     emoji: "🦶",
     description: "Your right foot helps you stand and walk. It has 5 toes!",
     funFact: "Both feet work together to help you balance and move!"
@@ -229,7 +256,7 @@ export const bodyParts: BodyPart[] = [
     id: "toes",
     name: "Toes",
     x: 50,
-    y: 96,
+    y: 100,
     emoji: "👣",
     description: "Your toes are at the end of your feet. They help you balance!",
     funFact: "Your big toe is the strongest toe!"

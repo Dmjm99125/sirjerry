@@ -1,0 +1,33 @@
+# Netlify Configuration for Body Parts Fun
+
+[build]
+  # Directory to publish (our build output)
+  publish = "dist"
+  
+  # Build command
+  command = "npm run build"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+
+# Headers for better performance and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Headers for static assets (caching)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers for fonts
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

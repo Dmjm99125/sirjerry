@@ -86,7 +86,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Eye",
     x: 58,
     y: 28,
-    emoji: "👁️",
+    emoji: "�",
     description: "Your right eye helps you see the world around you!",
     funFact: "Both eyes work together to help you see depth and distance!"
   },
@@ -122,7 +122,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Ear",
     x: 70,
     y: 31,
-    emoji: "👂",
+    emoji: "🦻",
     description: "Your right ear helps you hear sounds from the right side!",
     funFact: "Both ears work together to help you locate where sounds come from!"
   },
@@ -149,7 +149,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Shoulder",
     x: 60,
     y: 45,
-    emoji: "💪",
+    emoji: "🦾",
     description: "Your right shoulder helps your right arm move in all directions!",
     funFact: "Both shoulders work together to help you lift and carry things!"
   },
@@ -176,7 +176,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Arm",
     x: 62,
     y: 53,
-    emoji: "🦾",
+    emoji: "💪",
     description: "Your right arm helps you reach, hug, and carry things!",
     funFact: "Both arms work together to help you do amazing things!"
   },
@@ -194,7 +194,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Elbow",
     x: 65,
     y: 60,
-    emoji: "🤸",
+    emoji: "�",
     description: "Your right elbow is in the middle of your right arm and helps it bend!",
     funFact: "Your elbows are like hinges that let your arms fold!"
   },
@@ -212,7 +212,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Hand",
     x: 65,
     y: 68,
-    emoji: "🤚",
+    emoji: "🖐️",
     description: "Your right hand helps you hold things, write, and wave hello! It has 5 fingers.",
     funFact: "Most people are right-handed, but some are left-handed!"
   },
@@ -248,7 +248,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Leg",
     x: 58,
     y: 84,
-    emoji: "🦵",
+    emoji: "🚶",
     description: "Your right leg helps you walk, run, jump, and dance!",
     funFact: "Both legs work together to keep you balanced and moving!"
   },
@@ -266,7 +266,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Thigh",
     x: 58,
     y: 70,
-    emoji: "🍗",
+    emoji: "�",
     description: "Your right thigh is the upper part of your right leg with strong muscles!",
     funFact: "Both thighs work together to help you run, jump, and climb!"
   },
@@ -284,7 +284,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Knee",
     x: 58,
     y: 77,
-    emoji: "🦿",
+    emoji: "🏃",
     description: "Your right knee is in the middle of your right leg and helps it bend!",
     funFact: "Both knees work like hinges to help you walk and run!"
   },
@@ -302,7 +302,7 @@ export const bodyParts: BodyPart[] = [
     name: "Right Foot",
     x: 58,
     y: 90,
-    emoji: "🦶",
+    emoji: "👟",
     description: "Your right foot helps you stand and walk. It has 5 toes!",
     funFact: "Both feet work together to help you balance and move!"
   },

@@ -34,7 +34,7 @@ import { DragDropMode } from "@/components/DragDropMode";
 import { QuizMode } from "@/components/QuizMode";
 import { MemoryGame } from "@/components/MemoryGame";
 import { SoundGame } from "@/components/SoundGame";
-import { ColorMode } from "@/components/ColorMode";
+import { SimonSaysGame } from "@/components/SimonSaysGame";
 
 /** 
  * Available game modes in the application
@@ -45,9 +45,9 @@ import { ColorMode } from "@/components/ColorMode";
  * - quiz: Knowledge testing with scoring
  * - memory: Card matching memory game
  * - sound: Audio-focused learning activities
- * - color: Creative coloring activities
+ * - simon: Fast-paced reaction game following "Simon Says" directions
  */
-type GameMode = "menu" | "learn" | "drag" | "quiz" | "memory" | "sound" | "color";
+type GameMode = "menu" | "learn" | "drag" | "quiz" | "memory" | "sound" | "simon";
 
 /**
  * Main Application Component
@@ -64,7 +64,7 @@ const Index = () => {
    * Handle game mode selection from the main menu
    * @param selectedMode - The chosen game mode to navigate to
    */
-  const handleSelectMode = (selectedMode: "learn" | "drag" | "quiz" | "memory" | "sound" | "color") => {
+  const handleSelectMode = (selectedMode: "learn" | "drag" | "quiz" | "memory" | "sound" | "simon") => {
     setMode(selectedMode);
   };
 
@@ -86,7 +86,7 @@ const Index = () => {
       {mode === "quiz" && <QuizMode onBack={handleBackToMenu} />}
       {mode === "memory" && <MemoryGame onBack={handleBackToMenu} />}
       {mode === "sound" && <SoundGame onBack={handleBackToMenu} />}
-      {mode === "color" && <ColorMode onBack={handleBackToMenu} />}
+      {mode === "simon" && <SimonSaysGame onBack={handleBackToMenu} />}
     </>
   );
 };

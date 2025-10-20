@@ -1,36 +1,37 @@
 /**
- * Drag & Drop Mode Component - Interactive Matching Game
+ * Match Game Component - Interactive Matching (Mobile-Optimized)
  * 
- * This component creates a drag-and-drop matching game where children
- * drag body part labels to their correct locations on the character.
- * It develops fine motor skills and spatial reasoning.
+ * A mobile-friendly matching game where children tap body part labels
+ * to select them, then tap the body part on the character to complete the match.
+ * This works perfectly on both desktop and mobile devices.
  * 
  * EDUCATIONAL BENEFITS:
- * - Hand-eye coordination through drag and drop
+ * - Hand-eye coordination through tapping
  * - Spatial awareness and body part positioning
  * - Reading comprehension (matching words to images)
- * - Problem-solving through trial and error
+ * - Problem-solving through selection
  * - Sense of achievement through completion
  * 
  * GAME MECHANICS:
- * - Drag labels from left panel to body locations
- * - Visual feedback for correct/incorrect matches
+ * - Tap a label to select it (first step)
+ * - Tap the body part location to complete the match (second step)
+ * - Visual feedback for selection and matches
  * - Progress tracking with match counter
  * - Celebration when all parts are matched
  * - Option to reset and play again
  * 
  * ACCESSIBILITY CONSIDERATIONS:
- * - Large drag targets for young children
- * - Clear visual states for dragged items
+ * - Large tap targets for young children
+ * - Clear visual states for selected items
  * - Immediate feedback for all actions
- * - Disabled state for completed matches
+ * - Works perfectly on mobile, tablet, and desktop
  */
 
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import bodyImage from "@/assets/body-illustration.png";
 import Confetti from "react-confetti";
 import { bodyParts as allBodyParts } from "@/data/bodyParts";
 
@@ -54,35 +55,44 @@ const bodyParts = allBodyParts.filter(part =>
 
 export const DragDropMode = ({ onBack }: DragDropModeProps) => {
   // Game state management
-  const [draggedItem, setDraggedItem] = useState<string | null>(null); // Currently dragged label
+  const [selectedLabel, setSelectedLabel] = useState<string | null>(null); // Currently selected label
   const [matched, setMatched] = useState<string[]>([]); // Successfully matched items
   const [showConfetti, setShowConfetti] = useState(false); // Celebration animation
 
   /**
-   * Handle start of drag operation
-   * @param id - ID of the body part being dragged
+   * Handle label selection
+   * @param id - ID of the body part label being selected
    */
-  const handleDragStart = (id: string) => {
-    setDraggedItem(id);
+  const handleSelectLabel = (id: string) => {
+    if (matched.includes(id)) return; // Can't select already matched items
+    setSelectedLabel(selectedLabel === id ? null : id); // Toggle selection
   };
 
   /**
-   * Handle drop operation on target area
+   * Handle body part tap to complete match
    * 
-   * @param targetId - ID of the drop target area
+   * @param targetId - ID of the body part being tapped
    * 
    * VALIDATION LOGIC:
-   * 1. Check if dragged item matches target area
-   * 2. Ensure item hasn't already been matched
-   * 3. Update matched items list
-   * 4. Provide appropriate feedback
-   * 5. Check for game completion
+   * 1. Check if a label is selected
+   * 2. Check if the selected label matches the target
+   * 3. Ensure item hasn't already been matched
+   * 4. Update matched items list
+   * 5. Provide appropriate feedback
+   * 6. Check for game completion
    */
-  const handleDrop = (targetId: string) => {
+  const handleTapBodyPart = (targetId: string) => {
+    // Check if a label is selected
+    if (!selectedLabel) {
+      toast.info("Pick a label first! 👆");
+      return;
+    }
+
     // Check for correct match and prevent duplicate matches
-    if (draggedItem === targetId && !matched.includes(targetId)) {
+    if (selectedLabel === targetId && !matched.includes(targetId)) {
       // Add to matched items
       setMatched([...matched, targetId]);
+      setSelectedLabel(null);
       
       // Positive feedback for correct match
       toast.success("🎉 Perfect match!", {
@@ -98,15 +108,14 @@ export const DragDropMode = ({ onBack }: DragDropModeProps) => {
         // Auto-hide confetti after celebration
         setTimeout(() => setShowConfetti(false), 5000);
       }
-    } else if (draggedItem !== targetId) {
+    } else if (selectedLabel !== targetId) {
       // Gentle feedback for incorrect match
       toast.error("Oops! Try again!", {
         description: "That's not the right spot!",
       });
+    } else if (matched.includes(targetId)) {
+      toast.info("Already matched! ✓");
     }
-    
-    // Clear the dragged item regardless of outcome
-    setDraggedItem(null);
   };
 
   /**
@@ -123,81 +132,113 @@ export const DragDropMode = ({ onBack }: DragDropModeProps) => {
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/5 p-4">
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <Button onClick={onBack} variant="outline" size="lg" className="gap-2">
             <ArrowLeft className="w-5 h-5" />
             Back to Menu
           </Button>
-          <h1 className="text-4xl font-bold bg-gradient-fun bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-fun bg-clip-text text-transparent">
             Match Game
           </h1>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 h-[calc(100vh-200px)]">
-          <div className="bg-card rounded-3xl shadow-playful p-8 border-4 border-secondary/20 flex flex-col">
-            <h2 className="text-3xl font-bold text-center mb-6 text-foreground">
-              Drag the labels 👇
+        {/* Main Content */}
+        <div className="space-y-6">
+          {/* Progress Card */}
+          <Card className="p-6 text-center bg-gradient-to-r from-secondary to-secondary/50 text-secondary-foreground">
+            <p className="text-2xl md:text-3xl font-bold">
+              Matched: {matched.length} / {bodyParts.length}
+            </p>
+          </Card>
+
+          {/* Instructions */}
+          <Card className="p-6 space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-center">
+              Step 1: Tap a label �
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {bodyParts.map((part) => (
+                <button
+                  key={part.id}
+                  onClick={() => handleSelectLabel(part.id)}
+                  disabled={matched.includes(part.id)}
+                  className={`p-3 md:p-4 rounded-lg font-bold text-sm md:text-base transition-all transform hover:scale-105 active:scale-95 ${
+                    matched.includes(part.id)
+                      ? "bg-success/20 text-success line-through opacity-50 cursor-not-allowed"
+                      : selectedLabel === part.id
+                      ? "bg-primary text-primary-foreground scale-110 shadow-lg"
+                      : "bg-secondary text-secondary-foreground hover:shadow-md shadow-sm"
+                  }`}
+                >
+                  <div className="text-xl md:text-2xl mb-1">{part.emoji}</div>
+                  {part.name}
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          {/* Step 2 Instructions */}
+          <Card className="p-6 space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-center">
+              Step 2: Tap the body part 👇
             </h2>
             
-            <div className="flex-1 overflow-y-auto pr-2 space-y-4 max-h-[60vh]">
+            {selectedLabel && (
+              <div className="p-4 rounded-lg bg-primary/10 border-2 border-primary text-center">
+                <p className="text-sm text-muted-foreground mb-2">Looking for:</p>
+                <p className="text-2xl md:text-3xl font-bold">
+                  {bodyParts.find(p => p.id === selectedLabel)?.emoji} {bodyParts.find(p => p.id === selectedLabel)?.name}
+                </p>
+              </div>
+            )}
+
+            {/* Character with clickable body parts */}
+            <div className="relative w-full mx-auto bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-8 min-h-96 flex items-center justify-center">
+              {/* Character */}
+              <div className="text-8xl md:text-9xl">🧍</div>
+
+              {/* Clickable body part markers */}
               {bodyParts.map((part) => (
-                <div
+                <button
                   key={part.id}
-                  draggable={!matched.includes(part.id)}
-                  onDragStart={() => handleDragStart(part.id)}
-                  className={`p-6 rounded-2xl text-2xl font-bold text-center cursor-move transition-all ${
+                  onClick={() => handleTapBodyPart(part.id)}
+                  disabled={matched.includes(part.id)}
+                  className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all ${
                     matched.includes(part.id)
-                      ? "bg-success/20 text-success line-through opacity-50"
-                      : "bg-secondary text-secondary-foreground hover:scale-105 shadow-playful"
-                  }`}
-                >
-                  {part.name}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 text-center flex-shrink-0">
-              <p className="text-xl font-bold text-foreground">
-                Matched: {matched.length} / {bodyParts.length}
-              </p>
-              {matched.length === bodyParts.length && (
-                <Button onClick={handleReset} variant="playful" size="lg" className="mt-4">
-                  Play Again
-                </Button>
-              )}
-            </div>
-          </div>
-
-          <div className="bg-card rounded-3xl shadow-playful p-8 border-4 border-secondary/20">
-            <h2 className="text-3xl font-bold text-center mb-6 text-foreground">
-              Drop here! 🎯
-            </h2>
-
-            <div className="relative mx-auto max-w-md">
-              <img
-                src={bodyImage}
-                alt="Body illustration"
-                className="w-full h-auto"
-              />
-
-              {bodyParts.map((part) => (
-                <div
-                  key={part.id}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={() => handleDrop(part.id)}
-                  className={`absolute transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-4 flex items-center justify-center text-2xl font-bold transition-all ${
-                    matched.includes(part.id)
-                      ? "bg-success border-success text-success-foreground animate-bounce-in"
-                      : "bg-card/50 border-dashed border-secondary hover:bg-secondary/20"
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:scale-125 cursor-pointer active:scale-90"
                   }`}
                   style={{ left: `${part.x}%`, top: `${part.y}%` }}
+                  title={part.name}
                 >
-                  {matched.includes(part.id) && "✓"}
-                </div>
+                  <div
+                    className={`text-5xl md:text-6xl p-2 rounded-full transition-all flex items-center justify-center ${
+                      matched.includes(part.id)
+                        ? "bg-success text-success-foreground shadow-lg scale-110"
+                        : selectedLabel === part.id
+                        ? "bg-primary text-primary-foreground shadow-xl scale-110 animate-pulse"
+                        : "bg-white/70 hover:bg-blue-200 shadow-md"
+                    }`}
+                  >
+                    {matched.includes(part.id) ? "✓" : part.emoji}
+                  </div>
+                </button>
               ))}
             </div>
-          </div>
+          </Card>
+
+          {/* Reset Button */}
+          {matched.length === bodyParts.length && (
+            <Card className="p-8 text-center bg-gradient-to-r from-success to-success/50 text-success-foreground space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold">🌟 Amazing!</h2>
+              <p className="text-lg md:text-xl">You matched all the body parts!</p>
+              <Button onClick={handleReset} size="lg" className="text-lg px-8 py-6 bg-success-foreground text-success hover:bg-success-foreground/90">
+                Play Again 🎮
+              </Button>
+            </Card>
+          )}
         </div>
       </div>
     </div>

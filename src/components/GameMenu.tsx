@@ -24,11 +24,11 @@
  * - Descriptive text for emerging readers
  */
 
-import { Book, Puzzle, Brain, Headphones, Grid3x3, Palette } from "lucide-react";
+import { Book, Puzzle, Brain, Headphones, Grid3x3, Gamepad2 } from "lucide-react";
 
 interface GameMenuProps {
   /** Callback function to handle game mode selection */
-  onSelectMode: (mode: "learn" | "drag" | "quiz" | "memory" | "sound" | "color") => void;
+  onSelectMode: (mode: "learn" | "drag" | "quiz" | "memory" | "sound" | "simon") => void;
 }
 
 export const GameMenu = ({ onSelectMode }: GameMenuProps) => {
@@ -131,18 +131,18 @@ export const GameMenu = ({ onSelectMode }: GameMenuProps) => {
           </button>
 
           <button
-            onClick={() => onSelectMode("color")}
+            onClick={() => onSelectMode("simon")}
             className="group bg-card hover:bg-gradient-success rounded-3xl p-6 shadow-playful hover:shadow-xl transition-all hover:scale-105 border-4 border-success/20 hover:border-success"
           >
             <div className="flex flex-col items-center gap-3">
               <div className="bg-success/10 group-hover:bg-success-foreground/20 rounded-full p-4 transition-colors">
-                <Palette className="w-12 h-12 text-success group-hover:text-success-foreground" />
+                <Gamepad2 className="w-12 h-12 text-success group-hover:text-success-foreground" />
               </div>
               <h2 className="text-2xl font-bold text-foreground group-hover:text-success-foreground">
-                Color & Learn
+                Simon Says
               </h2>
               <p className="text-sm text-muted-foreground group-hover:text-success-foreground/80">
-                Color body parts as you learn!
+                Quick! Tap what Simon says!
               </p>
             </div>
           </button>
